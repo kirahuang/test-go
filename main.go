@@ -2,18 +2,27 @@ package main
 
 import (
 	"fmt"
-	greetings "github.com/kirahuang/test-go/src/test"
 	httpUtil "github.com/kirahuang/test-go/src/http"
 )
 
 func main() {
-	// Get a greeting message and print it.
-	message := greetings.Hello("Gladys")
-	fmt.Println(message)
+
+	//chrome 拿cookies
+	coo :="BIDUPSID=F2300C28CFF396DD0B725B58844A2167; PSTM=1601267805; BAIDUID=F2300C28CFF396DD4C01B20B23431C26:FG=1; BD_UPN=12314753; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BDUSS=VaNm1na0MtbGcwU2x1MDJzZWlxcEpEdUp4RmNZSH52eW5uTGRvRTJIaFQ0N0JmSVFBQUFBJCQAAAAAAAAAAAEAAADTWC0OaHVhbmd5aW5oYWlhYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFNWiV9TVolfbl; BDUSS_BFESS=VaNm1na0MtbGcwU2x1MDJzZWlxcEpEdUp4RmNZSH52eW5uTGRvRTJIaFQ0N0JmSVFBQUFBJCQAAAAAAAAAAAEAAADTWC0OaHVhbmd5aW5oYWlhYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFNWiV9TVolfbl; delPer=0; BD_CK_SAM=1; PSINO=5; BDRCVFR[feWj1Vr5u3D]=mk3SLVN4HKm; H_PS_645EC=e979J9nLW8kb2GaWPZIHU9oGNF%2F%2BXGp6ZzM%2Bfo%2BnwwNUegYxfIghzNe2xpVguP6e%2B2jE; BA_HECTOR=0l840l2g8k2100dj2u1fois2f0l; BD_HOME=1; H_PS_PSSID=7506_1460_7566_31254_32723_32231_7517_7605_32115_31709_26350; sugstore=1"
+	bytes:=httpUtil.HttpRequest("https://www.baidu.com",coo)
+	str := httpUtil.String(bytes)
+	//bytes[0] = 'i'//注意这一行，bytes在这里修改了数据，但是str打印出来的依然没变化，
+	fmt.Println(str)
 
 
-		bytes:=httpRequest("https://www.baidu.com")
-		str := String(bytes)
-		//bytes[0] = 'i'//注意这一行，bytes在这里修改了数据，但是str打印出来的依然没变化，
-		fmt.Println(str)
+
+
+//	s:="BIDUPSID=F2300C28CFF396DD0B725B58844A2167; PSTM=1601267805; BAIDUID=F2300C28CFF396DD4C01B20B23431C26:FG=1; BD_UPN=12314753; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; delPer=0; BD_CK_SAM=1; PSINO=5; COOKIE_SESSION=1019_0_9_9_9_8_0_0_9_4_6_0_0_0_273_0_1602817342_0_1602818088%7C9%230_1_1601287320%7C1; H_PS_PSSID=7506_1460_31254_32723_32231_7517_7605_32115_31709_26350; sugstore=1; H_PS_645EC=78bbuf3Nbeqc2SOikN1lNlThMG87ya89YcVb7JuxUGzK0c63Ymi6s%2BYDl%2B2NFsQOdTw%2F; BA_HECTOR=a08g8g2l8g8l21a7iu1foilil0i"
+//	sep:=";"
+//	strArr:=strings.Split(s,sep)
+//	fmt.Println("arr:",strArr)
+//
+//	for i := 0; i < len(strArr); i++ {
+//		fmt.Println("i=", i, strArr[i])
+//	}
 }
