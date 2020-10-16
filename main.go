@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	greetings "github.com/kirahuang/test-go/src/test"
 
-	"github.com/kirahuang/test-go/src/greetings"
 )
 
 func main() {
