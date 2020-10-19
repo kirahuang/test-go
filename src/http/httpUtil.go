@@ -37,7 +37,7 @@ func HttpRequest(url string)  {
 
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		fmt.Printf("\t=11=====================系统出错啦==================")
+		fmt.Printf("\n=11=====================系统出错啦==================")
 	}
 
 
@@ -46,7 +46,7 @@ func HttpRequest(url string)  {
 	request.Header.Add("Connection", "keep-alive")
 	request.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36")
 
-	fmt.Printf("\t=====================Requestcookie=%s", gcookiesss)
+	fmt.Printf("\n=====================Requestcookie=%s", gcookiesss)
     //分割cookie
 	strArr=strings.Split(gcookiesss,sep)
 	//fmt.Println("arr:",strArr)
@@ -70,17 +70,17 @@ func HttpRequest(url string)  {
 	//client := http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
-		fmt.Printf("\t=22=====================系统出错啦==================")
+		fmt.Printf("\n=22=====================系统出错啦==================")
 	}
 
-	fmt.Printf("httpResp.Header=%s", response.Header)
-	fmt.Printf("httpResp.Status=%s", response.Status)
+	fmt.Printf("\nhttpResp.Header=%s", response.Header)
+	fmt.Printf("\nhttpResp.Status=%s", response.Status)
 
 	defer response.Body.Close()
 
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		fmt.Printf("\t=33=====================系统出错啦==================")
+		fmt.Printf("\n=33=====================系统出错啦==================")
 	}
 
 	//var coonew []*http.Cookie = nil
@@ -130,7 +130,7 @@ func handlenewreponsecookie() {
 	}
 
 	gcookiesss= strings.Join(strArr, sep)+build.String()
-	fmt.Printf("\t=====================ReponseNewcookie=%s", gcookiesss)
+	fmt.Printf("\n=====================ReponseNewcookie=%s", gcookiesss)
 }
 
 func dbgPrintCurCookies() {
