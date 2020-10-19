@@ -11,10 +11,15 @@ import (
 //var gCurCookieJar *cookiejar.Jar
 var gCurCookies []*http.Cookie
 
+var gcookiesss string
+
 func  String(b []byte) string {    return *(*string)(unsafe.Pointer(&b))
 }
 
 func HttpRequest(url string,cook string) []byte {
+
+	gcookiesss = cook
+
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return []byte{}
@@ -29,7 +34,7 @@ func HttpRequest(url string,cook string) []byte {
     //分割cookie
 	sep:=";"
 	sep2:="="
-	strArr:=strings.Split(cook,sep)
+	strArr:=strings.Split(gcookiesss,sep)
 	//fmt.Println("arr:",strArr)
 
 	for i := 0; i < len(strArr); i++ {
