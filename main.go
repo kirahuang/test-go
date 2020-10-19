@@ -1,10 +1,15 @@
 package main
 
 import (
+	"fmt"
 	httpUtil "github.com/kirahuang/test-go/src/http"
 )
 
 func main() {
+
+	var countflag int32 = 1
+	countflag = 3
+	fmt.Println(countflag)
 
 	httpUtil.HttpTotal("https://www.baidu.com")
 

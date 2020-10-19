@@ -104,10 +104,13 @@ func handlenewreponsecookie() {
 	var cookieNum int = len(gresponseCookies)
 	var build strings.Builder
 	//fmt.Printf("cookieNum=%d", cookieNum)
+
+	//是否新参数
+	var countflag int = 1
+
 	for i := 0; i < cookieNum; i++ {
 		var curCk *http.Cookie = gresponseCookies[i]
 		//fmt.Printf("\n------ Cookie [%d]------", i)
-
 		for i := 0; i < len(strArr); i++ {
 			//fmt.Println("i=", i, strArr[i])
 			//分割某项cookie
@@ -118,13 +121,16 @@ func handlenewreponsecookie() {
 				strArr3[1]=curCk.Value
 				//替换父数组
 				strArr[i]= strArr3[0]+sep2+ strArr3[1]
-			}else{
-				//新增
-				build.WriteString(sep+curCk.Name +sep2+curCk.Value)
-
+				countflag = 2
 			}
 
 
+		}
+
+		if countflag==2{
+			//新增
+			build.WriteString(sep+curCk.Name +sep2+curCk.Value)
+			countflag=1
 		}
 
 	}
